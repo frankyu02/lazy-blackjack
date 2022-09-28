@@ -1,11 +1,15 @@
-CC = G++
-CFLAGS = -Wall -g -std=c++17
-EXEC: blackack
+CC = g++
+CFLAGS = -g -std=c++17
+EXEC = blackack
+OBJECTS = blackjack.o cards.o deck.o 
+DEPENDS = ${OBJECTS:.o=.d}
 
-${EXEC}: blackjack.o cards.o deck.o
-	${CC} ${CFLAGS} -o ${EXEC} blackjack.o cards.o deck.o
+${EXEC}: ${OBJECTS}
+	${CC} ${CFLAGS} ${OBJECTS} -o ${EXEC}
 
-blackjack.o: blackjack.cpp cards.h deck.h
-	${CC} ${CFLAGS} -c blackjack.cpp
-cards.o: cards.h
-deck.o: deck.h cards.h
+-include ${DEPENDS}
+
+.PHONY: clean
+
+clean:
+	rm ${OBJECTS} ${EXEC} ${DEPENDS}
