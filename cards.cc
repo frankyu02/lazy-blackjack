@@ -77,17 +77,3 @@ void Card::printCards(vector<Card> cards) const
 //|  7H  |
 //|      |
 //*------*
-int main()
-{
-    Card c1 = Card(CLUBS, SEVEN);
-    Card c2 = Card(DIAMONDS, SIX);
-    Card c3 = Card(SPADES, TEN);
-    Card c4 = Card(HEARTS, ACE);
-    vector<Card> cards;
-    cards.push_back(c1);
-    cards.push_back(c2);
-    cards.push_back(c3);
-    cards.push_back(c4);
-    c1.printCards(cards);
-    return 0;
-}
