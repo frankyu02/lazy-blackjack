@@ -1,7 +1,7 @@
 CC = g++
 CFLAGS = -g -std=c++17
 EXEC = blackjack
-OBJECTS = blackjack.o cards.o deck.o 
+OBJECTS = blackjack.o cards.o deck.o player.o human.o
 DEPENDS = ${OBJECTS:.o=.d}
 
 ${EXEC}: ${OBJECTS}
