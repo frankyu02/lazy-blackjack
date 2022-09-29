@@ -3,11 +3,7 @@
 #include <vector>
 using namespace std;
 
-Card::Card(Suit s, Rank r)
-{
-    suit = s;
-    rank = r;
-}
+Card::Card(Suit s, Rank r, bool h) : suit(s), rank(r), hidden(h) {}
 
 Suit Card::getSuit() const
 {
@@ -20,6 +16,10 @@ Rank Card::getRank() const
 bool operator==(const Card &c1, const Card &c2)
 {
     return c1.getSuit() == c2.getSuit() && c1.getRank() == c2.getRank();
+}
+void Card::changehidden()
+{
+    hidden = !hidden;
 }
 void Card::printCards(vector<Card> cards) const
 {

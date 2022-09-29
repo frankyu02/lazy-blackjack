@@ -31,15 +31,17 @@ class Card
     friend std::istream &operator>>(std::istream &is, Card &aCard);
     Suit suit;
     Rank rank;
+    bool hidden;
 
 public:
     // create constructor
-    Card(Suit s = CLUBS, Rank r = ACE);
+    Card(Suit s = CLUBS, Rank r = ACE, bool h = false);
     // get suit
     Suit getSuit() const;
     // get rank
     Rank getRank() const;
     void printCards(std::vector<Card>) const;
+    void changehidden();
 };
 // comparator for suit and rank
 bool operator==(const Card &c1, const Card &c2);
