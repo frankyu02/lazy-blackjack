@@ -7,6 +7,7 @@
 
 class Player
 {
+protected:
     std::vector<std::vector<std::shared_ptr<Card>>> hand;
     int score = 0;
     int money;
@@ -15,6 +16,7 @@ class Player
     bool playing = true;
     bool willBustonChange = false;                                            // determin if switching acevalue will cause bust
     virtual void calculateScore(std::vector<std::shared_ptr<Card>> hand) = 0; // should change aceValue to 1 if bust
+    virtual ~Player() = default;
     void split();
 
 public:
