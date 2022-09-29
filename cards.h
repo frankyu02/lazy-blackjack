@@ -31,6 +31,7 @@ class Card
     friend std::istream &operator>>(std::istream &is, Card &aCard);
     Suit suit;
     Rank rank;
+    int value;
     bool hidden;
 
 public:
@@ -42,6 +43,8 @@ public:
     Rank getRank() const;
     void printCards(std::vector<Card>) const;
     void changehidden();
+    int getValue();
+    void setValue(int);
 };
 // comparator for suit and rank
 bool operator==(const Card &c1, const Card &c2);

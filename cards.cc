@@ -3,7 +3,17 @@
 #include <vector>
 using namespace std;
 
-Card::Card(Suit s, Rank r, bool h) : suit(s), rank(r), hidden(h) {}
+Card::Card(Suit s, Rank r, bool h) : suit(s), rank(r), hidden(h)
+{
+    if (r == JACK || r == QUEEN || r == KING)
+    {
+        value = 10;
+    }
+    else
+    {
+        value = r + 1;
+    }
+}
 
 Suit Card::getSuit() const
 {
@@ -20,6 +30,14 @@ bool operator==(const Card &c1, const Card &c2)
 void Card::changehidden()
 {
     hidden = !hidden;
+}
+int Card::getValue()
+{
+    return value;
+}
+void Card::setValue(int v)
+{
+    value = v;
 }
 void Card::printCards(vector<Card> cards) const
 {
