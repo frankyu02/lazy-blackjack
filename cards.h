@@ -27,8 +27,6 @@ enum Rank
 };
 class Card
 {
-    // create istream and ostream operators as friends
-    friend std::istream &operator>>(std::istream &is, Card &aCard);
     Suit suit;
     Rank rank;
     int value;
@@ -43,10 +41,9 @@ public:
     Rank getRank() const;
     void printCards(std::vector<Card>) const;
     void changehidden();
-    int getValue();
+    int getValue() const;
     void setValue(int);
+    bool getHidden() const;
+    void printCard() const;
 };
-// comparator for suit and rank
-bool operator==(const Card &c1, const Card &c2);
-std::istream &operator>>(std::istream &in, Card &c);
 #endif
