@@ -127,36 +127,3 @@ void Hand::printHand()
     }
     cout << endl;
 }
-
-int main()
-{
-    // create hand
-    Hand hand;
-    // create hidden card
-    shared_ptr<Card> card1 = make_shared<Card>(Card(Suit::HEARTS, Rank::ACE, true));
-    // create visible card
-    shared_ptr<Card> card2 = make_shared<Card>(Card(Suit::HEARTS, Rank::ACE, false));
-    // create ace of hearts
-    shared_ptr<Card> card3 = make_shared<Card>(Card(Suit::HEARTS, Rank::ACE, false));
-    // create jack of spades
-    shared_ptr<Card> card4 = make_shared<Card>(Card(Suit::SPADES, Rank::JACK, false));
-    // add jack of spades
-    hand.addCard(card4);
-    cout << "added jack" << endl;
-    // print sum
-    cout << hand.getsum() << endl;
-    // configure ace values
-    hand.configureAceValues();
-    // add ace of hearts
-    hand.addCard(card3);
-    cout << "Added ace" << endl;
-    // print sum
-    cout << hand.getsum() << endl;
-    // configure ace values
-    hand.configureAceValues();
-    // add hidden card
-    hand.addCard(card1);
-    // print hand
-    hand.printHand();
-    return 0;
-}
