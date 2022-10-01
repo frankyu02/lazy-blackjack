@@ -10,13 +10,18 @@ class Hand
     bool hasAces = false;
     bool inPlay = true;
     void calculateScore();
+    bool isSplitable = false;
 
 public:
     Hand();
     void addCard(std::shared_ptr<Card> card);
     bool getInPlay() const;
+    bool getHasAces() const;
     void configureAceValues();
     int getsum() const;
+    bool getisSplitable() const;
     void printHand();
+    shared_ptr<Card> getCard(int i);
+    shared_ptr<Card> getback();
 };
 #endif

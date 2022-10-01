@@ -4,27 +4,22 @@
 #include <vector>
 #include <memory>
 #include "deck.h"
+#include "hand.h"
 
 class Player
 {
 protected:
-    std::vector<std::vector<std::shared_ptr<Card>>> hand;
-    int score = 0;
+    std::vector<std::shared_ptr<Hand>> hands;
     int money;
-    int bet = 0;
-    int aceValue = 1;
-    bool playing = true;
-    bool willBustonChange = false;                                            // determin if switching acevalue will cause bust
-    virtual void calculateScore(std::vector<std::shared_ptr<Card>> hand) = 0; // should change aceValue to 1 if bust
+    int Bet;
     virtual ~Player() = default;
     void split();
+    void doubleDown(std::shared_ptr<Deck> deck);
+    void hit(std::shared_ptr<Deck> deck, std::vector<std::shared_ptr<Card>> &hand);
 
 public:
+    void bet(int);
     Player(int m = 100);
-    virtual void display_hand(std::vector<std::shared_ptr<Card>> hand) const = 0;
     virtual void play(std::shared_ptr<Deck> deck) = 0;
-    virtual void hit(std::shared_ptr<Deck> deck, std::vector<std::shared_ptr<Card>> &hand) = 0;
-    virtual void bet(int b);
-    virtual void doubleDown(std::shared_ptr<Deck> deck, std::vector<std::shared_ptr<Card>> &hand) = 0;
 };
 #endif

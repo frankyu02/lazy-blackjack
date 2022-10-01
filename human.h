@@ -10,5 +10,6 @@ class Human : public Player
     void play(std::shared_ptr<Deck> deck) override;
     void hit(std::shared_ptr<Deck> deck, std::vector<std::shared_ptr<Card>> &hand) override;
     void doubleDown(std::shared_ptr<Deck> deck, std::vector<std::shared_ptr<Card>> &hand) override;
+    void dealwithAces(std::vector<std::shared_ptr<Card>> &hand) override;
 };
 #endif

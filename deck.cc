@@ -27,19 +27,18 @@ void Deck::shuffle(unsigned seed)
 }
 void Deck::printDeck() const
 {
-    for (int i = 0; i < deck.size(); i++)
+    string suites[4] = {"\x05", "\x04", "\x03", "\x06"};
+    string ranks[13] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K"};
+    int count = 0;
+    for (auto &card : deck)
     {
-        if (i != 0)
-        {
-            cout << " , ";
-        }
-        if (i % 13 == 0)
+        cout << ranks[card->getRank()] << suites[card->getSuit()] << " ";
+        count++;
+        if (count % 13 == 0)
         {
             cout << endl;
         }
-        cout << deck[i]->getRank() << " " << deck[i]->getSuit();
     }
-    cout << endl;
 }
 void Deck::reset()
 {
@@ -54,4 +53,10 @@ void Deck::reset()
             }
         }
     }
+}
+std::shared_ptr<Card> Deck::deal()
+{
+    std::shared_ptr<Card> temp = deck.back();
+    deck.pop_back();
+    return temp;
 }

@@ -14,6 +14,7 @@ public:
     Deck();
     void reset();
     void shuffle(unsigned seed = std::chrono::system_clock::now().time_since_epoch().count());
+    std::shared_ptr<Card> deal();
     void printDeck() const;
 };
 #endif

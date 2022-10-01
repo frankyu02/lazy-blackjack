@@ -7,7 +7,6 @@ using namespace std;
 Hand::Hand()
 {
 }
-
 void Hand::addCard(std::shared_ptr<Card> card)
 {
     hand.push_back(card);
@@ -15,12 +14,24 @@ void Hand::addCard(std::shared_ptr<Card> card)
     {
         hasAces = true;
     }
+    if (hand.size() == 2)
+    {
+        if (hand[0]->getRank() == hand[1]->getRank())
+        {
+            isSplitable = true;
+        }
+    }
     calculateScore();
 }
 
 bool Hand::getInPlay() const
 {
     return inPlay;
+}
+
+bool Hand::getHasAces() const
+{
+    return hasAces;
 }
 
 void Hand::configureAceValues()
@@ -126,4 +137,18 @@ void Hand::printHand()
         cout << "*------*";
     }
     cout << endl;
+}
+bool Hand::getisSplitable() const
+{
+    return isSplitable;
+}
+shared_ptr<Card> Hand::getCard(int i)
+{
+    return hand[i];
+}
+shared_ptr<Card> Hand::getback()
+{
+    shared_ptr<Card> temp = hand.back();
+    hand.pop_back();
+    return temp;
 }
