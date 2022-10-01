@@ -1,15 +1,13 @@
-#ifndef HUMAN_H_
-#define HUMAN_H_
+#ifndef HUMAN_H
+#define HUMAN_H
 #include "player.h"
 #include "deck.h"
 
 class Human : public Player
 {
+public:
     Human(int m = 100);
-    void display_hand(std::vector<std::shared_ptr<Card>> hand) const override;
     void play(std::shared_ptr<Deck> deck) override;
-    void hit(std::shared_ptr<Deck> deck, std::vector<std::shared_ptr<Card>> &hand) override;
-    void doubleDown(std::shared_ptr<Deck> deck, std::vector<std::shared_ptr<Card>> &hand) override;
-    void dealwithAces(std::vector<std::shared_ptr<Card>> &hand) override;
+    void init(std::shared_ptr<Deck> deck) override;
 };
 #endif

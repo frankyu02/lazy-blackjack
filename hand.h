@@ -1,5 +1,5 @@
-#ifndef HAND_H_
-#define HAND_H_
+#ifndef HAND_H
+#define HAND_H
 #include "cards.h"
 #include <vector>
 #include <memory>
@@ -9,8 +9,9 @@ class Hand
     int sum = 0;
     bool hasAces = false;
     bool inPlay = true;
-    void calculateScore();
     bool isSplitable = false;
+    bool doubledDown = false;
+    bool bust = false;
 
 public:
     Hand();
@@ -21,7 +22,13 @@ public:
     int getsum() const;
     bool getisSplitable() const;
     void printHand();
-    shared_ptr<Card> getCard(int i);
-    shared_ptr<Card> getback();
+    std::shared_ptr<Card> getCard(int i);
+    std::shared_ptr<Card> getback();
+    void calculateScore();
+    bool checkNatural();
+    void setInPlay(bool);
+    bool getDoubledDown() const;
+    void setDoubledDown(bool);
+    bool getBust() const;
 };
 #endif

@@ -86,6 +86,16 @@ void Hand::calculateScore()
     {
         sum += c->getValue();
     }
+    if (sum > 21)
+    {
+        inPlay = false;
+        bust = true;
+    }
+    else
+    {
+        inPlay = true;
+        bust = false;
+    }
 }
 void Hand::printHand()
 {
@@ -150,5 +160,38 @@ shared_ptr<Card> Hand::getback()
 {
     shared_ptr<Card> temp = hand.back();
     hand.pop_back();
+    calculateScore();
     return temp;
+}
+
+bool Hand::checkNatural()
+{
+    if (hand.size() == 2)
+    {
+        if (hand[0]->getRank() == ACE && hand[1]->getRank() == TEN)
+        {
+            return true;
+        }
+        if (hand[0]->getRank() == TEN && hand[1]->getRank() == ACE)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+void Hand::setInPlay(bool inPlay)
+{
+    this->inPlay = inPlay;
+}
+bool Hand::getDoubledDown() const
+{
+    return doubledDown;
+}
+void Hand::setDoubledDown(bool doubledDown)
+{
+    this->doubledDown = doubledDown;
+}
+bool Hand::getBust() const
+{
+    return bust;
 }

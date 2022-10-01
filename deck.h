@@ -1,5 +1,5 @@
-#ifndef DECK_H_
-#define DECK_H_
+#ifndef DECK_H
+#define DECK_H
 #include "cards.h"
 #include <vector>
 #include <memory>

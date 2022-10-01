@@ -14,17 +14,39 @@ void Player::split()
     temp->changehidden();
     hands[1]->addCard(temp);
 }
-void Player::doubleDown(std::shared_ptr<Deck> deck)
-{
-    shared_ptr<Card> temp = deck->deal();
-    temp->changehidden();
-    hands[0]->addCard(temp);
-}
 void Player::bet(int b)
 {
     Bet += b;
 }
-void Player::hit(std::shared_ptr<Deck> deck, std::vector<std::shared_ptr<Card>> &hand)
+
+bool Player::getNatural() const
 {
-    hand.emplace_back(deck->deal());
+    return natural;
+}
+void Player::reset()
+{
+    Bet = 0;
+    natural = false;
+    hands.clear();
+    hands.emplace_back(std::make_shared<Hand>());
+}
+std::vector<std::shared_ptr<Hand>> Player::getHands() const
+{
+    return hands;
+}
+void Player::subMoney(int m)
+{
+    money -= m;
+}
+void Player::addMoney(int m)
+{
+    money += m;
+}
+int Player::getMoney() const
+{
+    return money;
+}
+int Player::gethandsize() const
+{
+    return hands.size();
 }
