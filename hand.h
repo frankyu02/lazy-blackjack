@@ -30,5 +30,6 @@ public:
     bool getDoubledDown() const;
     void setDoubledDown(bool);
     bool getBust() const;
+    std::vector<std::shared_ptr<Card>> getCards();
 };
 #endif

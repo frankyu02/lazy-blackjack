@@ -5,8 +5,7 @@
 #include <string>
 #include <sstream>
 using namespace std;
-Human::Human(int m) : Player(m) {}
-
+Human::Human(int m, string n) : Player(m, n) {}
 void Human::play(shared_ptr<Deck> deck)
 {
     for (auto &hand : hands)
@@ -132,12 +131,4 @@ void Human::init(shared_ptr<Deck> deck)
             hands[0]->setDoubledDown(true);
         }
     }
-}
-int main()
-{
-    shared_ptr<Deck> deck = make_shared<Deck>();
-    deck->shuffle();
-    shared_ptr<Human> human = make_shared<Human>(100);
-    human->init(deck);
-    human->play(deck);
 }

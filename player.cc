@@ -2,7 +2,7 @@
 #include "deck.h"
 
 using namespace std;
-Player::Player(int m) : money{m}
+Player::Player(int m, string n) : money(m), name(n)
 {
     hands.emplace_back(std::make_shared<Hand>());
 }
@@ -49,4 +49,8 @@ int Player::getMoney() const
 int Player::gethandsize() const
 {
     return hands.size();
+}
+string Player::getName() const
+{
+    return name;
 }

@@ -5,6 +5,7 @@
 #include <memory>
 #include "deck.h"
 #include "hand.h"
+#include <string>
 
 class Player
 {
@@ -15,11 +16,12 @@ protected:
     bool natural = false;
     virtual ~Player() = default;
     void split();
+    string name;
 
 public:
     bool getNatural() const;
     void bet(int);
-    Player(int m = 100);
+    Player(int m = 100, string n = "Player");
     // normal play function
     virtual void play(std::shared_ptr<Deck> deck) = 0;
     // run once at start of each game.
@@ -30,5 +32,6 @@ public:
     void addMoney(int);
     int getMoney() const;
     int gethandsize() const;
+    string getName() const;
 };
 #endif

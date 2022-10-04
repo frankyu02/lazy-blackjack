@@ -1,13 +1,9 @@
-#ifndef HUMAN_H
-#define HUMAN_H
 #include "player.h"
-#include "deck.h"
 
-class Human : public Player
+class Dealer : public Player
 {
 public:
-    Human(int m = 100, string n = "Player");
+    Dealer(int m = 100, string n = "Dealer");
     void play(std::shared_ptr<Deck> deck) override;
     void init(std::shared_ptr<Deck> deck) override;
 };
-#endif

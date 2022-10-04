@@ -195,3 +195,7 @@ bool Hand::getBust() const
 {
     return bust;
 }
+vector<shared_ptr<Card>> Hand::getCards() const
+{
+    return hand;
+}
