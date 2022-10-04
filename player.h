@@ -16,22 +16,23 @@ protected:
     bool natural = false;
     virtual ~Player() = default;
     void split();
-    string name;
+    std::string name;
 
 public:
     bool getNatural() const;
     void bet(int);
-    Player(int m = 100, string n = "Player");
+    Player(int m = 100, std::string n = "Player");
     // normal play function
     virtual void play(std::shared_ptr<Deck> deck) = 0;
     // run once at start of each game.
     virtual void init(std::shared_ptr<Deck> deck) = 0;
     void reset();
-    std::vector<std::shared_ptr<hand>> getHands() const;
+    std::vector<std::shared_ptr<Hand>> getHands() const;
     void subMoney(int);
     void addMoney(int);
     int getMoney() const;
     int gethandsize() const;
-    string getName() const;
+    std::string getName() const;
+    int getBet() const;
 };
 #endif

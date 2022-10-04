@@ -6,7 +6,7 @@
 class Human : public Player
 {
 public:
-    Human(int m = 100, string n = "Player");
+    Human(int m = 100, std::string n = "Player");
     void play(std::shared_ptr<Deck> deck) override;
     void init(std::shared_ptr<Deck> deck) override;
 };

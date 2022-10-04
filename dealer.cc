@@ -6,7 +6,8 @@ Dealer::Dealer(int m, string n) : Player(m, n) {}
 
 void setAllAces(shared_ptr<Hand> hand, int i)
 {
-    for (auto &card : hand->getCards())
+    vector<shared_ptr<Card>> cards = hand->getCards();
+    for (auto &card : cards)
     {
         if (card->getRank() == ACE)
         {
@@ -14,7 +15,7 @@ void setAllAces(shared_ptr<Hand> hand, int i)
         }
     }
 }
-void Dealer::player(shared ptr<Deck> deck)
+void Dealer::play(shared_ptr<Deck> deck)
 {
     for (auto &hand : hands)
     {
@@ -35,7 +36,7 @@ void Dealer::player(shared ptr<Deck> deck)
             }
             if (hand->getsum() < 17)
             {
-                hand->addCard(deck->draw());
+                hand->addCard(deck->deal());
                 continue;
             }
             else
@@ -46,17 +47,17 @@ void Dealer::player(shared ptr<Deck> deck)
     }
 }
 
-void Dealer::init(shared ptr<Deck> deck)
+void Dealer::init(shared_ptr<Deck> deck)
 {
     for (auto &hand : hands)
     {
-        shared_ptr<Card> card1 = deck->draw();
+        shared_ptr<Card> card1 = deck->deal();
         card1->changehidden();
         hand->addCard(card1);
-        hand->addCard(deck->draw());
+        hand->addCard(deck->deal());
         if (hand->getHasAces())
         {
-            setALlAces(hand, 11);
+            setAllAces(hand, 11);
         }
     }
 }

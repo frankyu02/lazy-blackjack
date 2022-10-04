@@ -54,3 +54,7 @@ string Player::getName() const
 {
     return name;
 }
+int Player::getBet() const
+{
+    return Bet;
+}
